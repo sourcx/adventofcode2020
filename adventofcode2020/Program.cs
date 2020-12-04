@@ -15,7 +15,9 @@ namespace adventofcode
             // Day2();
             // Day2_part2();
             // Day3();
-            Day3_part2();
+            // Day3_part2();
+            // Day4();
+            Day4_part2();
         }
 
         // Find the two entries that sum to 2020; what do you get if you multiply them together?
@@ -137,10 +139,10 @@ namespace adventofcode
 
             var map = mapList.ToArray();
 
-            Console.WriteLine($"I hit {treesHit(map, 3, 1)} trees."); // 280
+            Console.WriteLine($"I hit {TreesHit(map, 3, 1)} trees."); // 280
         }
 
-        static int treesHit(char[][] map, int x_delta, int y_delta)
+        static int TreesHit(char[][] map, int x_delta, int y_delta)
         {
             int x = 0;
             int y = 0;
@@ -173,13 +175,160 @@ namespace adventofcode
 
             Int64 totalTreesHit = 1;
 
-            totalTreesHit *= treesHit(map, 1, 1);
-            totalTreesHit *= treesHit(map, 3, 1);
-            totalTreesHit *= treesHit(map, 5, 1);
-            totalTreesHit *= treesHit(map, 7, 1);
-            totalTreesHit *= treesHit(map, 1, 2);
+            totalTreesHit *= TreesHit(map, 1, 1);
+            totalTreesHit *= TreesHit(map, 3, 1);
+            totalTreesHit *= TreesHit(map, 5, 1);
+            totalTreesHit *= TreesHit(map, 7, 1);
+            totalTreesHit *= TreesHit(map, 1, 2);
 
             Console.WriteLine($"I hit {totalTreesHit} trees in total."); // 4355551200
+        }
+
+        // In your batch file, how many passports are valid?
+        static void Day4()
+        {
+            CheckPassports(PassportHasRequiredFields); // 256
+        }
+
+        static void Day4_part2()
+        {
+            CheckPassports(PassportHasValidFields); // kleiner dan not 199
+        }
+
+        static void CheckPassports(Func<Dictionary<string, string>, bool> IsValidPassport)
+        {
+            int validPassports = 0;
+
+            var passport = new Dictionary<string, string>();
+
+            foreach (var line in File.ReadLines("input/4"))
+            {
+                if (line == String.Empty)
+                {
+                    if (IsValidPassport(passport))
+                    {
+                        validPassports += 1;
+                    }
+                    passport.Clear();
+                }
+                else
+                {
+                    foreach (Match match in Regex.Matches(line, @"(\w\w\w:\S+)"))
+                    {
+                        var k = match.Value.Split(":")[0];
+                        var v = match.Value.Split(":")[1];
+                        passport.Add(k, v);
+                    }
+                }
+            }
+
+            if (IsValidPassport(passport))
+            {
+                validPassports += 1;
+            }
+
+            Console.WriteLine($"There are {validPassports} valid passports.");
+        }
+
+        static List<string> MANDATORY_FIELDS = new List<string>() {
+            "byr",  "iyr",  "eyr",  "hgt",  "hcl",  "ecl",  "pid"
+        };
+
+        static bool PassportHasRequiredFields(Dictionary<string, string> passport)
+        {
+            foreach (var field in MANDATORY_FIELDS)
+            {
+                if (!passport.Keys.Contains(field))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        static List<string> EYECOLORS = new List<string>() {
+            "amb", "blu", "brn", "gry", "grn", "hzl", "oth"
+        };
+
+        static bool PassportHasValidFields(Dictionary<string, string> passport)
+        {
+            foreach (var field in MANDATORY_FIELDS)
+            {
+                if (!passport.Keys.Contains(field))
+                {
+                    return false;
+                }
+            }
+
+            // byr (Birth Year) - four digits; at least 1920 and at most 2002.
+            var byr = Int32.Parse(passport["byr"]);
+            if (byr < 1920 || byr > 2002)
+            {
+                return false;
+            }
+
+            // iyr (Issue Year) - four digits; at least 2010 and at most 2020.
+            var iyr = Int32.Parse(passport["iyr"]);
+            if (iyr < 2010 || iyr > 2020)
+            {
+                return false;
+            }
+
+            // eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
+            var eyr = Int32.Parse(passport["eyr"]);
+            if (eyr < 2020 || eyr > 2030)
+            {
+                return false;
+            }
+
+            // hgt (Height) - a number followed by either cm or in:
+            //                If cm, the number must be at least 150 and at most 193.
+            //                If in, the number must be at least 59 and at most 76.
+            var hgt = passport["hgt"];
+            if (hgt.Contains("cm"))
+            {
+                var cm = Int32.Parse(hgt.Split("cm")[0]);
+                if (cm < 150 || cm > 193)
+                {
+                    return false;
+                }
+            }
+            else if (hgt.Contains("in"))
+            {
+                var inch = Int32.Parse(hgt.Split("in")[0]);
+                if (inch < 59 || inch > 76)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            // hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
+            var hcl = passport["hcl"];
+            if (!Regex.Match(hcl, @"#[0-9,a-f]{6}").Success)
+            {
+                return false;
+            }
+
+            // ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
+            var ecl = passport["ecl"];
+            if (!EYECOLORS.Contains(ecl))
+            {
+                return false;
+            }
+
+            // pid (Passport ID) - a nine-digit number, including leading zeroes.
+            var pid = passport["pid"];
+            if (!Regex.Match(pid, @"^[0-9]{9}$").Success)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
