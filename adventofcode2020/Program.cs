@@ -19,7 +19,9 @@ namespace adventofcode
             // Day4();
             // Day4_part2();
             // Day5();
-            Day5_part2();
+            // Day5_part2();
+            Day6();
+            Day6_part2();
         }
 
         // Find the two entries that sum to 2020; what do you get if you multiply them together?
@@ -396,6 +398,69 @@ namespace adventofcode
                 Console.WriteLine($"{seat} is my seat.");
                 return;
             }
+        }
+
+        // What is the sum of those counts?
+        static void Day6()
+        {
+            var answers = new HashSet<char>();
+            int sum = 0;
+
+            foreach (var line in File.ReadLines("input/6_example"))
+            {
+                if (line == String.Empty)
+                {
+                    Console.WriteLine($"Last set had {answers.Count} answers.");
+                    sum += answers.Count;
+                    answers.Clear();
+                }
+
+                foreach (var c in line.ToArray())
+                {
+                    answers.Add(c);
+                }
+            }
+
+            Console.WriteLine($"Last set had {answers.Count} answers.");
+            sum += answers.Count;
+
+            Console.WriteLine($"Sum of count is {sum}.");
+        }
+
+        static void Day6_part2()
+        {
+            HashSet<char> answers = null;
+            int sum = 0;
+
+            foreach (var line in File.ReadLines("input/6"))
+            {
+                if (line == String.Empty)
+                {
+                    Console.WriteLine($"Last set had {answers.Count} answers.");
+                    sum += answers.Count;
+                    answers = null;
+                }
+                else
+                {
+                    if (answers == null)
+                    {
+                        answers = new HashSet<char>();
+                        foreach (var c in line.ToArray())
+                        {
+                            answers.Add(c);
+                        }
+                    }
+                    else
+                    {
+                        answers.IntersectWith(line.ToArray());
+                    }
+                }
+            }
+
+            Console.WriteLine($"Last set had {answers.Count} answers.");
+            sum += answers.Count;
+
+            Console.WriteLine($"Sum of count is {sum}.");
         }
     }
 }
