@@ -4,13 +4,13 @@
     {
         static void Main(string[] args)
         {
-            Day01.start();
-            Day02.start();
-            Day03.start();
-            Day04.start();
-            Day05.start();
-            Day06.start();
-            // Day07.start();
+            // Day01.start();
+            // Day02.start();
+            // Day03.start();
+            // Day04.start();
+            // Day05.start();
+            // Day06.start();
+            Day07.start();
             // Day08.start();
             // Day09.start();
             // Day10.start();
