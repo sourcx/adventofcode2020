@@ -44,14 +44,7 @@ namespace adventofcode
 
             public int NrOfContainingBags()
             {
-                int total = 1;
-
-                foreach (var bag in _bags)
-                {
-                    total += bag.Item1 * bag.Item2.NrOfContainingBags();
-                }
-
-                return total;
+                return _bags.Aggregate(1, (sum, bag) => sum + bag.Item1 * bag.Item2.NrOfContainingBags());
             }
 
             public override bool Equals(object obj)
