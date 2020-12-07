@@ -8,6 +8,14 @@ namespace adventofcode
 {
     class Day04
     {
+        static List<string> MANDATORY_FIELDS = new List<string>() {
+            "byr",  "iyr",  "eyr",  "hgt",  "hcl",  "ecl",  "pid"
+        };
+
+        static List<string> EYECOLORS = new List<string>() {
+            "amb", "blu", "brn", "gry", "grn", "hzl", "oth"
+        };
+
         public static void start()
         {
             part1();
@@ -16,13 +24,12 @@ namespace adventofcode
 
         static void part1()
         {
-            CheckPassports(PassportHasRequiredFields); // 256
-
+            CheckPassports(HasRequiredFields); // 256
         }
 
         static void part2()
         {
-            CheckPassports(PassportHasValidFields); // 198
+            CheckPassports(HasValidFields); // 198
         }
 
         static void CheckPassports(Func<Dictionary<string, string>, bool> IsValidPassport)
@@ -60,11 +67,7 @@ namespace adventofcode
             Console.WriteLine($"Day 04: There are {validPassports} valid passports.");
         }
 
-        static List<string> MANDATORY_FIELDS = new List<string>() {
-            "byr",  "iyr",  "eyr",  "hgt",  "hcl",  "ecl",  "pid"
-        };
-
-        static bool PassportHasRequiredFields(Dictionary<string, string> passport)
+        static bool HasRequiredFields(Dictionary<string, string> passport)
         {
             foreach (var field in MANDATORY_FIELDS)
             {
@@ -77,11 +80,7 @@ namespace adventofcode
             return true;
         }
 
-        static List<string> EYECOLORS = new List<string>() {
-            "amb", "blu", "brn", "gry", "grn", "hzl", "oth"
-        };
-
-        static bool PassportHasValidFields(Dictionary<string, string> passport)
+        static bool HasValidFields(Dictionary<string, string> passport)
         {
             foreach (var field in MANDATORY_FIELDS)
             {
@@ -118,7 +117,7 @@ namespace adventofcode
             var hgt = passport["hgt"];
             if (hgt.Contains("cm"))
             {
-                var cm = Int32.Parse(hgt.Split("cm")[0]);
+                var cm = Int32.Parse(hgt[..^2]);
                 if (cm < 150 || cm > 193)
                 {
                     return false;
@@ -126,7 +125,7 @@ namespace adventofcode
             }
             else if (hgt.Contains("in"))
             {
-                var inch = Int32.Parse(hgt.Split("in")[0]);
+                var inch = Int32.Parse(hgt[..^2]);
                 if (inch < 59 || inch > 76)
                 {
                     return false;
