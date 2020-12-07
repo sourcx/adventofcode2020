@@ -19,7 +19,7 @@ namespace adventofcode
             var answers = new HashSet<char>();
             int sum = 0;
 
-            foreach (var line in File.ReadLines("input/6_example"))
+            foreach (var line in File.ReadLines("input/6"))
             {
                 if (line == String.Empty)
                 {
