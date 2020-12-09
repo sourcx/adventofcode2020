@@ -41,14 +41,7 @@ namespace adventofcode
 
         static List<long> ReadNrs()
         {
-            var nrs = new List<long>();
-
-            foreach (var nr in File.ReadLines("input/9"))
-            {
-                nrs.Add(Int64.Parse(nr));
-            }
-
-            return nrs;
+            return File.ReadLines("input/9").Select(Int64.Parse).ToList();
         }
 
         private static IEnumerable<long> SumsBefore(List<long> nrs, int start, int length)
