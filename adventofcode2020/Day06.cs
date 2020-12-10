@@ -7,14 +7,14 @@ namespace adventofcode
 {
     class Day06
     {
-        public static void start()
+        public static void Start()
         {
-            part1();
-            part2();
+            Part1();
+            Part2();
         }
 
         // What is the sum of those counts?
-        static void part1()
+        static void Part1()
         {
             var answers = new HashSet<char>();
             int sum = 0;
@@ -40,7 +40,7 @@ namespace adventofcode
             Console.WriteLine($"Day 06: Questions to which anyone answered yes: {sum}."); // 11
         }
 
-        static void part2()
+        static void Part2()
         {
             HashSet<char> answers = null;
             int sum = 0;

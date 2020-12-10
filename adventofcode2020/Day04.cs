@@ -16,18 +16,18 @@ namespace adventofcode
             "amb", "blu", "brn", "gry", "grn", "hzl", "oth"
         };
 
-        public static void start()
+        public static void Start()
         {
-            part1();
-            part2();
+            Part1();
+            Part2();
         }
 
-        static void part1()
+        static void Part1()
         {
             CheckPassports(HasRequiredFields); // 256
         }
 
-        static void part2()
+        static void Part2()
         {
             CheckPassports(HasValidFields); // 198
         }

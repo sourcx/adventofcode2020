@@ -66,15 +66,15 @@ namespace adventofcode
             }
         }
 
-        public static void start()
+        public static void Start()
         {
             var bags = GetBags();
-            part1(bags);
-            part2(bags);
+            Part1(bags);
+            Part2(bags);
         }
 
         // How many bag colors can eventually contain at least one shiny gold bag?
-        static void part1(HashSet<Bag> bags)
+        static void Part1(HashSet<Bag> bags)
         {
             var shinyGoldBag = new Bag("shiny gold");
             var nrContainingShinyGold = bags.Where(bag => bag.Contains(shinyGoldBag)).Count();
@@ -83,7 +83,7 @@ namespace adventofcode
         }
 
         // How many individual bags are required inside your single shiny gold bag?
-        static void part2(HashSet<Bag> bags)
+        static void Part2(HashSet<Bag> bags)
         {
             Bag shinyGold = null;
 

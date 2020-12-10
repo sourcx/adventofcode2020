@@ -8,13 +8,13 @@ namespace adventofcode
     {
         static Int16 YEAR = 2020;
 
-        public static void start()
+        public static void Start()
         {
-            part1();
-            part2();
+            Part1();
+            Part2();
         }
 
-        static void part1()
+        static void Part1()
         {
             var entries = new List<Int16>();
 
@@ -36,7 +36,7 @@ namespace adventofcode
             }
         }
 
-        static void part2()
+        static void Part2()
         {
             var entries = new List<Int16>();
 

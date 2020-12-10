@@ -7,13 +7,13 @@ namespace adventofcode
 {
     class Day09
     {
-        public static void start()
+        public static void Start()
         {
-            var failedSum = part1();
-            part2(failedSum);
+            var failedSum = Part1();
+            Part2(failedSum);
         }
 
-        static long part1()
+        static long Part1()
         {
             var nrs = ReadNrs();
             var preamble = 25;
@@ -30,13 +30,13 @@ namespace adventofcode
             return -1;
         }
 
-        static void part2(long sum)
+        static void Part2(long sum)
         {
             var nrs = ReadNrs();
             var sequence = FindSequenceToSum(nrs, sum);
             var encryptionWeakness = sequence.Min() + sequence.Max();
 
-            Console.WriteLine($"The XMAS encryption weakness: {encryptionWeakness}.");
+            Console.WriteLine($"Day 09: The XMAS encryption weakness: {encryptionWeakness}.");
         }
 
         static List<long> ReadNrs()

@@ -7,13 +7,13 @@ namespace adventofcode
 {
     class Day03
     {
-        public static void start()
+        public static void Start()
         {
-            part1();
-            part2();
+            Part1();
+            Part2();
         }
 
-        static void part1()
+        static void Part1()
         {
             var mapList = new List<char[]>();
 
@@ -27,7 +27,7 @@ namespace adventofcode
             Console.WriteLine($"Day 03: I hit {TreesHit(map, 3, 1)} trees."); // 280
         }
 
-        static void part2()
+        static void Part2()
         {
             var mapList = new List<char[]>();
 

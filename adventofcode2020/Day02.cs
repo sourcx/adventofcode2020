@@ -7,13 +7,13 @@ namespace adventofcode
 {
     class Day02
     {
-        public static void start()
+        public static void Start()
         {
-            part1();
-            part2();
+            Part1();
+            Part2();
         }
 
-        static void part1()
+        static void Part1()
         {
             Int16 correctPasswords = 0;
 
@@ -35,7 +35,7 @@ namespace adventofcode
             Console.WriteLine($"Day02: {correctPasswords} passwords are correct."); // 625
         }
 
-        static void part2()
+        static void Part2()
         {
             Int16 correctPasswords = 0;
 

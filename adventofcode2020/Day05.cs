@@ -8,18 +8,18 @@ namespace adventofcode
 {
     class Day05
     {
-        public static void start()
+        public static void Start()
         {
-            part1();
-            part2();
+            Part1();
+            Part2();
         }
 
-        static void part1()
+        static void Part1()
         {
             Console.WriteLine($"Day 05: Highest seat ID: {GetAllSeatIDs().Max()}.");
         }
 
-        static void part2()
+        static void Part2()
         {
             var bookedSeats = GetAllSeatIDs();
             bookedSeats.Sort();

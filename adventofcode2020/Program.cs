@@ -4,31 +4,31 @@
     {
         static void Main(string[] args)
         {
-            // Day01.start();
-            // Day02.start();
-            // Day03.start();
-            // Day04.start();
-            // Day05.start();
-            // Day06.start();
-            // Day07.start();
-            // Day08.start();
-            Day09.start();
-            // Day10.start();
-            // Day11.start();
-            // Day12.start();
-            // Day13.start();
-            // Day14.start();
-            // Day15.start();
-            // Day16.start();
-            // Day17.start();
-            // Day18.start();
-            // Day19.start();
-            // Day20.start();
-            // Day21.start();
-            // Day22.start();
-            // Day23.start();
-            // Day24.start();
-            // Day25.start();
+            // Day01.Start();
+            // Day02.Start();
+            // Day03.Start();
+            // Day04.Start();
+            // Day05.Start();
+            // Day06.Start();
+            // Day07.Start();
+            // Day08.Start();
+            // Day09.Start();
+            Day10.Start();
+            // Day11.Start();
+            // Day12.Start();
+            // Day13.Start();
+            // Day14.Start();
+            // Day15.Start();
+            // Day16.Start();
+            // Day17.Start();
+            // Day18.Start();
+            // Day19.Start();
+            // Day20.Start();
+            // Day21.Start();
+            // Day22.Start();
+            // Day23.Start();
+            // Day24.Start();
+            // Day25.Start();
         }
     }
 }

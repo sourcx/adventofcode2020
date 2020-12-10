@@ -106,14 +106,14 @@ namespace adventofcode
             }
         }
 
-        public static void start()
+        public static void Start()
         {
-            part1();
-            part2();
+            Part1();
+            Part2();
         }
 
         // Immediately before any instruction is executed a second time, what value is in the accumulator?
-        static void part1()
+        static void Part1()
         {
             var machine = new Machine(ReadInstructions());
             machine.Run();
@@ -121,7 +121,7 @@ namespace adventofcode
         }
 
         // What is the value of the accumulator after the program terminates?
-        static void part2()
+        static void Part2()
         {
             var machine = new Machine(ReadInstructions());
             machine.Run();
