@@ -117,6 +117,8 @@ namespace adventofcode
             var hgt = passport["hgt"];
             if (hgt.Contains("cm"))
             {
+                // https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/ranges-indexes
+                // ^ index-from-end operator
                 var cm = Int32.Parse(hgt[..^2]);
                 if (cm < 150 || cm > 193)
                 {
